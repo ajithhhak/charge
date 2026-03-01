@@ -5,261 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CHARGE REVAMPED 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background: #050505;
-      color: white;
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-      line-height: 1.5;
-    }
-
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 44px;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid #1c1c1c;
-    }
-
-    header h2 {
-      font-family: 'Orbitron', sans-serif;
-      color: #00fff2;
-      font-size: 1.15rem;
-    }
-
-    nav a {
-      margin-left: 18px;
-      text-decoration: none;
-      color: white;
-      font-size: 0.95rem;
-      transition: color 0.2s ease;
-    }
-
-    nav a:hover { color: #00fff2; }
-
-    .hero {
-      text-align: center;
-      padding: 110px 20px 70px;
-      max-width: 950px;
-      margin: auto;
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 6vw, 3.3rem);
-      font-family: 'Orbitron', sans-serif;
-      margin-bottom: 22px;
-      color: #00fff2;
-    }
-
-    .hero p {
-      font-size: 1.02rem;
-      margin-bottom: 36px;
-    }
-
-    .btn {
-      padding: 14px 36px;
-      background: #00fff2;
-      color: black;
-      border-radius: 28px;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-block;
-      margin-bottom: 34px;
-    }
-
-    .countdown {
-      font-size: 1.2rem;
-      color: #00fff2;
-      font-weight: 500;
-    }
-
-    section { padding: 70px 28px; }
-
-    .section-title {
-      text-align: center;
-      font-size: clamp(1.8rem, 5vw, 2.6rem);
-      font-family: 'Orbitron', sans-serif;
-      margin-bottom: 48px;
-      color: #00fff2;
-    }
-
-    .event-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
-      gap: 28px;
-      max-width: 1100px;
-      margin: auto;
-      justify-content: center;
-    }
-
-    .event-card {
-      background: #0d0d0d;
-      border-radius: 14px;
-      padding: 26px;
-      text-align: center;
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 0 20px rgba(0,255,242,0.1), 0 0 40px rgba(0,255,242,0.04);
-      border: 1px solid #1a1a1a;
-    }
-
-    .event-card::before {
-      content: '';
-      position: absolute;
-      top: -16px;
-      left: -16px;
-      right: -16px;
-      bottom: -16px;
-      background: radial-gradient(circle, #00fff2 0%, transparent 68%);
-      opacity: 0.07;
-      z-index: -1;
-    }
-
-    .event-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 0 28px rgba(0,255,242,0.35), 0 0 58px rgba(0,255,242,0.18);
-    }
-
-    .event-card h3 {
-      font-family: 'Orbitron', sans-serif;
-      margin-bottom: 10px;
-      font-size: 1.05rem;
-    }
-
-    .event-content {
-      display: none;
-      font-size: 0.92rem;
-      margin-top: 12px;
-      color: #d9d9d9;
-    }
-
-    .info {
-      text-align: center;
-      max-width: 940px;
-      margin: 0 auto;
-      font-size: 1.04rem;
-    }
-
-    .info p { margin-bottom: 16px; }
-    .info strong { color: #00fff2; }
-
-    .about-gallery {
-      max-width: 1080px;
-      margin: 30px auto 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
-
-    .about-gallery figure {
-      background: #0e0e0e;
-      border: 1px solid #1d1d1d;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .about-gallery img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .about-gallery figcaption {
-      padding: 10px 12px;
-      font-size: 0.88rem;
-      color: #d5d5d5;
-    }
-
-    .form-wrap {
-      max-width: 760px;
-      margin: auto;
-      background: rgba(10, 10, 10, 0.95);
-      border: 1px solid #1f1f1f;
-      border-radius: 14px;
-      padding: 26px;
-      box-shadow: 0 0 25px rgba(0,255,242,0.08);
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    label {
-      display: block;
-      font-size: 0.9rem;
-      margin-bottom: 7px;
-      color: #d9d9d9;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 11px 12px;
-      border-radius: 9px;
-      border: 1px solid #2a2a2a;
-      background: #111;
-      color: white;
-      outline: none;
-    }
-
-    textarea { min-height: 100px; resize: vertical; }
-
-    .full { grid-column: 1 / -1; }
-
-    .submit-btn {
-      border: none;
-      cursor: pointer;
-      margin-top: 4px;
-    }
-
-    .form-note {
-      margin-top: 12px;
-      color: #a8a8a8;
-      font-size: 0.84rem;
-      text-align: center;
-    }
-
-    footer {
-      text-align: center;
-      padding: 34px;
-      border-top: 1px solid #222;
-      margin-top: 40px;
-      color: #c4c4c4;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 760px) {
-      header {
-        flex-direction: column;
-        gap: 12px;
-        padding: 16px 20px;
-      }
-
-      nav a { margin: 0 9px; }
-      .form-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <canvas id="bg"></canvas>
+  <canvas id="bg" aria-hidden="true"></canvas>
 
   <header>
     <h2>⚡ CHARGE REVAMPED 2026</h2>
@@ -271,211 +20,119 @@
     </nav>
   </header>
 
-  <section id="home" class="hero">
-    <h1>Welcome to CHARGE REVAMPED 2026</h1>
-    <p>
-      Organized by <strong>The Electronix Club, Department of ECE, Sreenidhi Institute of Science and Technology</strong>,
-      CHARGE 2026 is one of the biggest student-driven electronics technology events bringing together innovators,
-      engineers, and technology enthusiasts.
-      <br /><br />
-      The event includes a <em>Hackathon, Workshop sessions, and several mini technical events</em> where participants can
-      collaborate, learn, and build real-world solutions.
-    </p>
-    <a href="#registration" class="btn">Register Now</a>
-
-    <div class="countdown">
-      <p>Event Begins In</p>
-      <div id="timer">Loading...</div>
-    </div>
-  </section>
-
-  <section id="events">
-    <h2 class="section-title">Events</h2>
-    <div class="event-grid">
-      <div class="event-card" onclick="toggle('hack')">
-        <h3>Hackathon</h3>
-        <div id="hack" class="event-content">
-          Build innovative electronics and software solutions in teams under time constraints.
-        </div>
-      </div>
-      <div class="event-card" onclick="toggle('work')">
-        <h3>Workshop</h3>
-        <div id="work" class="event-content">
-          Hands-on sessions on IoT, PCB design, embedded systems, and rapid prototyping.
-        </div>
-      </div>
-      <div class="event-card" onclick="toggle('mini')">
-        <h3>Mini Events</h3>
-        <div id="mini" class="event-content">
-          Circuit debugging, tech quiz, robo-race, and speed-building challenges.
-        </div>
-      </div>
-      <div class="event-card" onclick="toggle('expo')">
-        <h3>Project Expo</h3>
-        <div id="expo" class="event-content">
-          Showcase your project to industry mentors, judges, and visitors.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="registration">
-    <h2 class="section-title">Registration</h2>
-    <div class="form-wrap">
-      <form>
-        <div class="form-grid">
-          <div>
-            <label for="name">Full Name</label>
-            <input id="name" name="name" type="text" placeholder="Your full name" required />
-          </div>
-          <div>
-            <label for="email">Email Address</label>
-            <input id="email" name="email" type="email" placeholder="you@example.com" required />
-          </div>
-          <div>
-            <label for="phone">Phone Number</label>
-            <input id="phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required />
-          </div>
-          <div>
-            <label for="college">College / Organization</label>
-            <input id="college" name="college" type="text" placeholder="Institution name" required />
-          </div>
-          <div class="full">
-            <label for="event">Select Event</label>
-            <select id="event" name="event" required>
-              <option value="">Choose one</option>
-              <option>Hackathon</option>
-              <option>Workshop</option>
-              <option>Mini Events</option>
-              <option>Project Expo</option>
-            </select>
-          </div>
-          <div class="full">
-            <label for="message">Message / Team Details (Optional)</label>
-            <textarea id="message" name="message" placeholder="Tell us about your team or idea"></textarea>
-          </div>
-          <div class="full">
-            <button class="btn submit-btn" type="submit">Submit Registration</button>
-          </div>
-        </div>
-      </form>
-      <p class="form-note">This is a demo registration form UI. Connect it to a backend or Google Form for live submissions.</p>
-    </div>
-  </section>
-
-  <section id="about">
-    <h2 class="section-title">About Us</h2>
-    <div class="info">
+  <main>
+    <section id="home" class="hero">
+      <h1>Welcome to CHARGE REVAMPED 2026</h1>
       <p>
-        <strong>CHARGE</strong> is the flagship technical event by the Electronics Club, Department of ECE, SNIST.
+        Organized by <strong>The Electronix Club, Department of ECE, Sreenidhi Institute of Science and Technology</strong>,
+        CHARGE 2026 brings innovators, engineers, and tech enthusiasts together for an unforgettable experience.
+        <br /><br />
+        Join our <em>Hackathon, Workshops, and Mini Events</em> to learn, build, and compete with the best.
       </p>
-      <p>
-        For 10+ years, we have created a platform where students innovate, collaborate, and present practical solutions
-        through competitions, workshops, and exhibitions.
-      </p>
-      <p>
-        We host over <strong>7000+ attendees</strong> and support students with mentorship, networking, and prizes.
-      </p>
-    </div>
+      <a href="#registration" class="btn">Register Now</a>
 
-    <div class="about-gallery">
-      <figure>
-        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80" alt="Students attending a technology event" />
-        <figcaption>Students participating in technical talks and networking sessions.</figcaption>
-      </figure>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" alt="Team working in a hackathon" />
-        <figcaption>Hackathon teams building and testing prototypes together.</figcaption>
-      </figure>
-      <figure>
-        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80" alt="Workshop in progress with laptop and electronics" />
-        <figcaption>Hands-on workshops focused on practical engineering skills.</figcaption>
-      </figure>
-    </div>
-  </section>
+      <div class="countdown" aria-live="polite">
+        <p>Event Begins In</p>
+        <div id="timer">Loading...</div>
+      </div>
+    </section>
+
+    <section id="events">
+      <h2 class="section-title">Events</h2>
+      <div class="event-grid">
+        <article class="event-card">
+          <button type="button" class="event-toggle" aria-expanded="false" aria-controls="hack-details">Hackathon</button>
+          <p id="hack-details" class="event-content">Build innovative electronics and software solutions in teams under time constraints.</p>
+        </article>
+
+        <article class="event-card">
+          <button type="button" class="event-toggle" aria-expanded="false" aria-controls="workshop-details">Workshop</button>
+          <p id="workshop-details" class="event-content">Hands-on sessions on IoT, PCB design, embedded systems, and rapid prototyping.</p>
+        </article>
+
+        <article class="event-card">
+          <button type="button" class="event-toggle" aria-expanded="false" aria-controls="mini-details">Mini Events</button>
+          <p id="mini-details" class="event-content">Circuit debugging, tech quiz, robo-race, and speed-building challenges.</p>
+        </article>
+
+        <article class="event-card">
+          <button type="button" class="event-toggle" aria-expanded="false" aria-controls="expo-details">Project Expo</button>
+          <p id="expo-details" class="event-content">Showcase your project to industry mentors, judges, and visitors.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="registration">
+      <h2 class="section-title">Registration</h2>
+      <div class="form-wrap">
+        <form id="registration-form" novalidate>
+          <div class="form-grid">
+            <div>
+              <label for="name">Full Name</label>
+              <input id="name" name="name" type="text" placeholder="Your full name" required />
+            </div>
+            <div>
+              <label for="email">Email Address</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+            <div>
+              <label for="phone">Phone Number</label>
+              <input id="phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required />
+            </div>
+            <div>
+              <label for="college">College / Organization</label>
+              <input id="college" name="college" type="text" placeholder="Institution name" required />
+            </div>
+            <div class="full">
+              <label for="event">Select Event</label>
+              <select id="event" name="event" required>
+                <option value="">Choose one</option>
+                <option>Hackathon</option>
+                <option>Workshop</option>
+                <option>Mini Events</option>
+                <option>Project Expo</option>
+              </select>
+            </div>
+            <div class="full">
+              <label for="message">Message / Team Details (Optional)</label>
+              <textarea id="message" name="message" placeholder="Tell us about your team or idea"></textarea>
+            </div>
+            <div class="full">
+              <button class="btn submit-btn" type="submit">Submit Registration</button>
+            </div>
+          </div>
+        </form>
+        <p id="form-status" class="form-note" aria-live="polite">Fill in the form and click submit. Your registration is saved in your browser.</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About Us</h2>
+      <div class="info">
+        <p><strong>CHARGE</strong> is the flagship technical event by the Electronics Club, Department of ECE, SNIST.</p>
+        <p>For 10+ years, we have created a platform where students innovate, collaborate, and present practical solutions through competitions, workshops, and exhibitions.</p>
+        <p>We host over <strong>7000+ attendees</strong> and support students with mentorship, networking, and prizes.</p>
+      </div>
+
+      <div class="about-gallery">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80" alt="Students attending a technology event" loading="lazy" />
+          <figcaption>Students participating in technical talks and networking sessions.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" alt="Team working in a hackathon" loading="lazy" />
+          <figcaption>Hackathon teams building and testing prototypes together.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80" alt="Workshop in progress with laptop and electronics" loading="lazy" />
+          <figcaption>Hands-on workshops focused on practical engineering skills.</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
 
   <footer>© 2026 CHARGE | The Electronix Club, Department of ECE, SNIST</footer>
 
-  <script>
-    function toggle(id) {
-      const x = document.getElementById(id);
-      x.style.display = x.style.display === 'block' ? 'none' : 'block';
-    }
-
-    const canvas = document.getElementById('bg');
-    const ctx = canvas.getContext('2d');
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    const particles = [];
-    for (let i = 0; i < 80; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5
-      });
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      particles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = '#00fff2';
-        ctx.fill();
-
-        particles.forEach((p2) => {
-          const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = 'rgba(0,255,242,0.15)';
-            ctx.stroke();
-          }
-        });
-      });
-
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    const eventDate = new Date('March 10, 2026 09:00:00').getTime();
-
-    function updateTimer() {
-      const now = new Date().getTime();
-      const distance = eventDate - now;
-
-      if (distance < 0) {
-        document.getElementById('timer').textContent = 'Event Started!';
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById('timer').textContent = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
-    }
-
-    setInterval(updateTimer, 1000);
-    updateTimer();
-  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
