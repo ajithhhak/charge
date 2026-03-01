@@ -1,88 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CHARGE REVAMPED 2026</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+/* Countdown */
+.countdown {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
 
-  <!-- HERO SECTION -->
-  <section id="home" class="hero">
+/* Floating Bottom Button */
+.floating-register {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  font-size: 24px;
+  font-weight: bold;
+  background: #000;
+  color: #fff;
+  border: none;
+  z-index: 999;
+  cursor: pointer;
+}
 
-    <!-- Countdown at Top -->
-    <div class="countdown" aria-live="polite">
-      <p>Event Begins In</p>
-      <div id="timer">Loading...</div>
-    </div>
+/* Registration Section */
+.registration-section {
+  min-height: 100vh;
+  padding: 60px 20px;
+}
 
-    <h1>Welcome to CHARGE REVAMPED 2026</h1>
+/* Gallery Grid */
+.about-gallery {
+  display: grid;
+  gap: 20px;
+}
 
-    <p>
-      Organized by <strong>The Electronix Club, Department of ECE, Sreenidhi Institute of Science and Technology</strong>,
-      CHARGE 2026 brings innovators, engineers, and tech enthusiasts together for an unforgettable experience.
-      <br /><br />
-      Join our <em>Hackathon, Workshop, Project Expo, and Drone Competition</em> to learn, build, and compete.
-    </p>
+.about-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-  </section>
+/* Mobile 2x2 Grid */
+@media (max-width: 768px) {
+  .about-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-  <!-- ABOUT / IMAGES SECTION -->
-  <section class="about">
-    <div class="about-gallery">
-      <figure><img src="assets/img1.jpg" alt="Event 1"></figure>
-      <figure><img src="assets/img2.jpg" alt="Event 2"></figure>
-      <figure><img src="assets/img3.jpg" alt="Event 3"></figure>
-      <figure><img src="assets/img4.jpg" alt="Event 4"></figure>
-    </div>
-  </section>
-
-  <!-- REGISTRATION SECTION -->
-  <section id="register" class="registration-section">
-    <h2>Registration</h2>
-    <p>Click the button below to explore registration details.</p>
-  </section>
-
-  <!-- FLOATING EXPLORE BUTTON -->
-  <button id="floating-register" class="floating-register" type="button">
-    🚀 Explore Registration
-  </button>
-
-  <!-- MODAL -->
-  <dialog id="registration-modal">
-    <h3>Choose Event</h3>
-    <ul>
-      <li><a href="#">Hackathon</a></li>
-      <li><a href="#">Workshop</a></li>
-      <li><a href="#">Project Expo</a></li>
-      <li><a href="#">Drone Competition</a></li>
-    </ul>
-    <button id="close-modal">Close</button>
-  </dialog>
-
-  <!-- JAVASCRIPT -->
-  <script>
-    // Countdown Timer
-    const eventDate = new Date("March 30, 2026 00:00:00").getTime();
-    const timer = document.getElementById("timer");
-
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = eventDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      timer.innerHTML = days + " Days";
-    }, 1000);
-
-    // Modal Logic
-    const modal = document.getElementById("registration-modal");
-    const openBtn = document.getElementById("floating-register");
-    const closeBtn = document.getElementById("close-modal");
-
-    openBtn.addEventListener("click", () => modal.showModal());
-    closeBtn.addEventListener("click", () => modal.close());
-  </script>
-
-</body>
-</html>
+  .about-gallery figure:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
