@@ -95,6 +95,7 @@
   dockFloatingButton();
 
   floatingButton.addEventListener('click', () => {
+    if (typeof modal.showModal === 'function') modal.showModal();
     if (typeof modal.showModal === 'function') {
       modal.showModal();
     }

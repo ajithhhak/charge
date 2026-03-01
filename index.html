@@ -29,6 +29,10 @@
         <br /><br />
         Join our <em>Hackathon, Workshop, Project Expo, and Drone Competition</em> to learn, build, and compete.
       </p>
+
+      <div class="countdown" aria-live="polite">
+        <p>Event Begins In</p>
+        <div id="timer">8 days</div>
       <a href="#registration" class="btn">Explore Registration</a>
 
       <div class="countdown" aria-live="polite">
@@ -64,10 +68,13 @@
           <p id="drone-details" class="event-content">Compete in obstacle and precision challenges to test drone control, design, and teamwork.</p>
         </article>
       </div>
+
+      <div id="register-dock" class="register-dock"></div>
     </section>
 
     <section id="registration" class="registration-section">
       <h2 class="section-title">Registration</h2>
+      <p class="registration-copy">Use the floating <strong>Explore Registration</strong> button. It follows you while scrolling and locks here when you reach this section.</p>
       <p class="registration-copy">Tap the floating <strong>Register Now</strong> button anytime. It follows you while scrolling and docks right here at the registration section.</p>
       <div id="register-dock" class="register-dock"></div>
     </section>
@@ -97,6 +104,11 @@
     </section>
   </main>
 
+  <button id="floating-register" class="floating-register btn" type="button">🚀 Explore Registration</button>
+
+  <dialog id="registration-modal" class="registration-modal">
+    <form id="registration-form" class="modal-form" method="dialog" novalidate>
+      <h3>Explore Registration - CHARGE 2026</h3>
   <button id="floating-register" class="floating-register" type="button">🚀 Register Now</button>
 
   <dialog id="registration-modal" class="registration-modal">
