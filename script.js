@@ -44,23 +44,6 @@
   }
   animate();
 
-  const eventDate = new Date('March 10, 2027 09:00:00').getTime();
-  const timer = document.getElementById('timer');
-  function updateTimer() {
-    const distance = eventDate - Date.now();
-    if (distance < 0) {
-      timer.textContent = 'Event Started!';
-      return;
-    }
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    timer.textContent = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
-  }
-  setInterval(updateTimer, 1000);
-  updateTimer();
-
   document.querySelectorAll('.event-toggle').forEach((btn) => {
     btn.addEventListener('click', () => {
       const target = document.getElementById(btn.getAttribute('aria-controls'));
@@ -96,9 +79,6 @@
 
   floatingButton.addEventListener('click', () => {
     if (typeof modal.showModal === 'function') modal.showModal();
-    if (typeof modal.showModal === 'function') {
-      modal.showModal();
-    }
   });
 
   closeModal.addEventListener('click', () => modal.close());
