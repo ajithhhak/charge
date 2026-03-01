@@ -27,9 +27,9 @@
         Organized by <strong>The Electronix Club, Department of ECE, Sreenidhi Institute of Science and Technology</strong>,
         CHARGE 2026 brings innovators, engineers, and tech enthusiasts together for an unforgettable experience.
         <br /><br />
-        Join our <em>Hackathon, Workshops, and Mini Events</em> to learn, build, and compete with the best.
+        Join our <em>Hackathon, Workshop, Project Expo, and Drone Competition</em> to learn, build, and compete.
       </p>
-      <a href="#registration" class="btn">Register Now</a>
+      <a href="#registration" class="btn">Explore Registration</a>
 
       <div class="countdown" aria-live="polite">
         <p>Event Begins In</p>
@@ -41,69 +41,35 @@
       <h2 class="section-title">Events</h2>
       <div class="event-grid">
         <article class="event-card">
+          <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1200&q=80" alt="Students coding during a hackathon" loading="lazy" />
           <button type="button" class="event-toggle" aria-expanded="false" aria-controls="hack-details">Hackathon</button>
-          <p id="hack-details" class="event-content">Build innovative electronics and software solutions in teams under time constraints.</p>
+          <p id="hack-details" class="event-content">Build a prototype in teams, solve real-world problems, and pitch your idea to judges.</p>
         </article>
 
         <article class="event-card">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="Workshop mentor guiding participants" loading="lazy" />
           <button type="button" class="event-toggle" aria-expanded="false" aria-controls="workshop-details">Workshop</button>
-          <p id="workshop-details" class="event-content">Hands-on sessions on IoT, PCB design, embedded systems, and rapid prototyping.</p>
+          <p id="workshop-details" class="event-content">Hands-on sessions on embedded systems, IoT, PCB design, and rapid engineering workflows.</p>
         </article>
 
         <article class="event-card">
-          <button type="button" class="event-toggle" aria-expanded="false" aria-controls="mini-details">Mini Events</button>
-          <p id="mini-details" class="event-content">Circuit debugging, tech quiz, robo-race, and speed-building challenges.</p>
-        </article>
-
-        <article class="event-card">
+          <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=1200&q=80" alt="Project exhibition setup with electronics" loading="lazy" />
           <button type="button" class="event-toggle" aria-expanded="false" aria-controls="expo-details">Project Expo</button>
-          <p id="expo-details" class="event-content">Showcase your project to industry mentors, judges, and visitors.</p>
+          <p id="expo-details" class="event-content">Showcase your final project, explain your build process, and network with visitors and experts.</p>
+        </article>
+
+        <article class="event-card">
+          <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1200&q=80" alt="Drone flying during a competition" loading="lazy" />
+          <button type="button" class="event-toggle" aria-expanded="false" aria-controls="drone-details">Drone Competition</button>
+          <p id="drone-details" class="event-content">Compete in obstacle and precision challenges to test drone control, design, and teamwork.</p>
         </article>
       </div>
     </section>
 
-    <section id="registration">
+    <section id="registration" class="registration-section">
       <h2 class="section-title">Registration</h2>
-      <div class="form-wrap">
-        <form id="registration-form" novalidate>
-          <div class="form-grid">
-            <div>
-              <label for="name">Full Name</label>
-              <input id="name" name="name" type="text" placeholder="Your full name" required />
-            </div>
-            <div>
-              <label for="email">Email Address</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required />
-            </div>
-            <div>
-              <label for="phone">Phone Number</label>
-              <input id="phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required />
-            </div>
-            <div>
-              <label for="college">College / Organization</label>
-              <input id="college" name="college" type="text" placeholder="Institution name" required />
-            </div>
-            <div class="full">
-              <label for="event">Select Event</label>
-              <select id="event" name="event" required>
-                <option value="">Choose one</option>
-                <option>Hackathon</option>
-                <option>Workshop</option>
-                <option>Mini Events</option>
-                <option>Project Expo</option>
-              </select>
-            </div>
-            <div class="full">
-              <label for="message">Message / Team Details (Optional)</label>
-              <textarea id="message" name="message" placeholder="Tell us about your team or idea"></textarea>
-            </div>
-            <div class="full">
-              <button class="btn submit-btn" type="submit">Submit Registration</button>
-            </div>
-          </div>
-        </form>
-        <p id="form-status" class="form-note" aria-live="polite">Fill in the form and click submit. Your registration is saved in your browser.</p>
-      </div>
+      <p class="registration-copy">Tap the floating <strong>Register Now</strong> button anytime. It follows you while scrolling and docks right here at the registration section.</p>
+      <div id="register-dock" class="register-dock"></div>
     </section>
 
     <section id="about">
@@ -130,6 +96,51 @@
       </div>
     </section>
   </main>
+
+  <button id="floating-register" class="floating-register" type="button">🚀 Register Now</button>
+
+  <dialog id="registration-modal" class="registration-modal">
+    <form id="registration-form" class="modal-form" method="dialog" novalidate>
+      <h3>Register for CHARGE 2026</h3>
+      <div class="form-grid">
+        <div>
+          <label for="name">Full Name</label>
+          <input id="name" name="name" type="text" placeholder="Your full name" required />
+        </div>
+        <div>
+          <label for="email">Email Address</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div>
+          <label for="phone">Phone Number</label>
+          <input id="phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required />
+        </div>
+        <div>
+          <label for="college">College / Organization</label>
+          <input id="college" name="college" type="text" placeholder="Institution name" required />
+        </div>
+        <div class="full">
+          <label for="event">Select Event</label>
+          <select id="event" name="event" required>
+            <option value="">Choose one</option>
+            <option>Hackathon</option>
+            <option>Workshop</option>
+            <option>Project Expo</option>
+            <option>Drone Competition</option>
+          </select>
+        </div>
+        <div class="full">
+          <label for="message">Message / Team Details (Optional)</label>
+          <textarea id="message" name="message" placeholder="Tell us about your team or idea"></textarea>
+        </div>
+      </div>
+      <p id="form-status" class="form-note" aria-live="polite">Fill the form and submit to save your registration in this browser.</p>
+      <div class="modal-actions">
+        <button class="btn submit-btn" type="submit">Submit Registration</button>
+        <button id="close-modal" class="btn btn-secondary" type="button">Close</button>
+      </div>
+    </form>
+  </dialog>
 
   <footer>© 2026 CHARGE | The Electronix Club, Department of ECE, SNIST</footer>
 

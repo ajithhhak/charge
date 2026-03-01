@@ -11,22 +11,15 @@
   window.addEventListener('resize', resizeCanvas);
 
   const particles = [];
-  for (let i = 0; i < 80; i += 1) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-    });
+  for (let i = 0; i < 85; i += 1) {
+    particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5 });
   }
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     particles.forEach((p) => {
       p.x += p.vx;
       p.y += p.vy;
-
       if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
       if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
@@ -49,29 +42,22 @@
 
     requestAnimationFrame(animate);
   }
-
   animate();
 
   const eventDate = new Date('March 10, 2027 09:00:00').getTime();
   const timer = document.getElementById('timer');
-
   function updateTimer() {
-    const now = Date.now();
-    const distance = eventDate - now;
-
+    const distance = eventDate - Date.now();
     if (distance < 0) {
       timer.textContent = 'Event Started!';
       return;
     }
-
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
     timer.textContent = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
   }
-
   setInterval(updateTimer, 1000);
   updateTimer();
 
@@ -84,12 +70,40 @@
     });
   });
 
+  const floatingButton = document.getElementById('floating-register');
+  const registerDock = document.getElementById('register-dock');
+  const modal = document.getElementById('registration-modal');
+  const closeModal = document.getElementById('close-modal');
   const form = document.getElementById('registration-form');
   const status = document.getElementById('form-status');
 
+  function dockFloatingButton() {
+    const dockRect = registerDock.getBoundingClientRect();
+    const shouldDock = dockRect.top <= window.innerHeight - 130;
+
+    if (shouldDock && !registerDock.contains(floatingButton)) {
+      registerDock.appendChild(floatingButton);
+      floatingButton.classList.add('docked');
+    } else if (!shouldDock && registerDock.contains(floatingButton)) {
+      document.body.appendChild(floatingButton);
+      floatingButton.classList.remove('docked');
+    }
+  }
+
+  window.addEventListener('scroll', dockFloatingButton, { passive: true });
+  window.addEventListener('resize', dockFloatingButton);
+  dockFloatingButton();
+
+  floatingButton.addEventListener('click', () => {
+    if (typeof modal.showModal === 'function') {
+      modal.showModal();
+    }
+  });
+
+  closeModal.addEventListener('click', () => modal.close());
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-
     if (!form.checkValidity()) {
       status.className = 'form-note error';
       status.textContent = 'Please complete all required fields before submitting.';
@@ -102,8 +116,14 @@
     existing.push({ ...formData, submittedAt: new Date().toISOString() });
     localStorage.setItem('charge_registrations', JSON.stringify(existing));
 
-    form.reset();
     status.className = 'form-note success';
-    status.textContent = 'Registration submitted successfully! We saved your response in this browser.';
+    status.textContent = 'Registration submitted successfully!';
+    form.reset();
+
+    setTimeout(() => {
+      if (modal.open) modal.close();
+      status.className = 'form-note';
+      status.textContent = 'Fill the form and submit to save your registration in this browser.';
+    }, 900);
   });
 })();
