@@ -141,3 +141,39 @@ dialog {
 dialog::backdrop {
   background: rgba(0,0,0,0.7);
 }
+/* Override ANY old register button */
+#floating-register {
+  position: fixed !important;
+  bottom: 30px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  padding: 18px 50px !important;
+  border-radius: 50px !important;
+  font-size: 18px !important;
+  z-index: 9999 !important;
+}
+
+/* Dock mode when reaching registration */
+#floating-register.dock {
+  left: 0 !important;
+  transform: none !important;
+  width: 100% !important;
+  height: 20vh !important;
+  border-radius: 0 !important;
+  font-size: 26px !important;
+}
+.about-gallery {
+  display: grid;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .about-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-gallery figure:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
