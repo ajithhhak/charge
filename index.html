@@ -4,158 +4,85 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CHARGE REVAMPED 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <canvas id="bg" aria-hidden="true"></canvas>
 
-  <header>
-    <h2>⚡ CHARGE REVAMPED 2026</h2>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#events">Events</a>
-      <a href="#registration">Registration</a>
-      <a href="#about">About Us</a>
-    </nav>
-  </header>
+  <!-- HERO SECTION -->
+  <section id="home" class="hero">
 
-  <main>
-    <section id="home" class="hero">
-      <h1>Welcome to CHARGE REVAMPED 2026</h1>
-      <p>
-        Organized by <strong>The Electronix Club, Department of ECE, Sreenidhi Institute of Science and Technology</strong>,
-        CHARGE 2026 brings innovators, engineers, and tech enthusiasts together for an unforgettable experience.
-        <br /><br />
-        Join our <em>Hackathon, Workshop, Project Expo, and Drone Competition</em> to learn, build, and compete.
-      </p>
+    <!-- Countdown at Top -->
+    <div class="countdown" aria-live="polite">
+      <p>Event Begins In</p>
+      <div id="timer">Loading...</div>
+    </div>
 
-      <div class="countdown" aria-live="polite">
-        <p>Event Begins In</p>
-        <div id="timer">8 days</div>
-      <a href="#registration" class="btn">Explore Registration</a>
+    <h1>Welcome to CHARGE REVAMPED 2026</h1>
 
-      <div class="countdown" aria-live="polite">
-        <p>Event Begins In</p>
-        <div id="timer">Loading...</div>
-      </div>
-    </section>
+    <p>
+      Organized by <strong>The Electronix Club, Department of ECE, Sreenidhi Institute of Science and Technology</strong>,
+      CHARGE 2026 brings innovators, engineers, and tech enthusiasts together for an unforgettable experience.
+      <br /><br />
+      Join our <em>Hackathon, Workshop, Project Expo, and Drone Competition</em> to learn, build, and compete.
+    </p>
 
-    <section id="events">
-      <h2 class="section-title">Events</h2>
-      <div class="event-grid">
-        <article class="event-card">
-          <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1200&q=80" alt="Students coding during a hackathon" loading="lazy" />
-          <button type="button" class="event-toggle" aria-expanded="false" aria-controls="hack-details">Hackathon</button>
-          <p id="hack-details" class="event-content">Build a prototype in teams, solve real-world problems, and pitch your idea to judges.</p>
-        </article>
+  </section>
 
-        <article class="event-card">
-          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="Workshop mentor guiding participants" loading="lazy" />
-          <button type="button" class="event-toggle" aria-expanded="false" aria-controls="workshop-details">Workshop</button>
-          <p id="workshop-details" class="event-content">Hands-on sessions on embedded systems, IoT, PCB design, and rapid engineering workflows.</p>
-        </article>
+  <!-- ABOUT / IMAGES SECTION -->
+  <section class="about">
+    <div class="about-gallery">
+      <figure><img src="assets/img1.jpg" alt="Event 1"></figure>
+      <figure><img src="assets/img2.jpg" alt="Event 2"></figure>
+      <figure><img src="assets/img3.jpg" alt="Event 3"></figure>
+      <figure><img src="assets/img4.jpg" alt="Event 4"></figure>
+    </div>
+  </section>
 
-        <article class="event-card">
-          <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=1200&q=80" alt="Project exhibition setup with electronics" loading="lazy" />
-          <button type="button" class="event-toggle" aria-expanded="false" aria-controls="expo-details">Project Expo</button>
-          <p id="expo-details" class="event-content">Showcase your final project, explain your build process, and network with visitors and experts.</p>
-        </article>
+  <!-- REGISTRATION SECTION -->
+  <section id="register" class="registration-section">
+    <h2>Registration</h2>
+    <p>Click the button below to explore registration details.</p>
+  </section>
 
-        <article class="event-card">
-          <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1200&q=80" alt="Drone flying during a competition" loading="lazy" />
-          <button type="button" class="event-toggle" aria-expanded="false" aria-controls="drone-details">Drone Competition</button>
-          <p id="drone-details" class="event-content">Compete in obstacle and precision challenges to test drone control, design, and teamwork.</p>
-        </article>
-      </div>
+  <!-- FLOATING EXPLORE BUTTON -->
+  <button id="floating-register" class="floating-register" type="button">
+    🚀 Explore Registration
+  </button>
 
-      <div id="register-dock" class="register-dock"></div>
-    </section>
-
-    <section id="registration" class="registration-section">
-      <h2 class="section-title">Registration</h2>
-      <p class="registration-copy">Use the floating <strong>Explore Registration</strong> button. It follows you while scrolling and locks here when you reach this section.</p>
-      <p class="registration-copy">Tap the floating <strong>Register Now</strong> button anytime. It follows you while scrolling and docks right here at the registration section.</p>
-      <div id="register-dock" class="register-dock"></div>
-    </section>
-
-    <section id="about">
-      <h2 class="section-title">About Us</h2>
-      <div class="info">
-        <p><strong>CHARGE</strong> is the flagship technical event by the Electronics Club, Department of ECE, SNIST.</p>
-        <p>For 10+ years, we have created a platform where students innovate, collaborate, and present practical solutions through competitions, workshops, and exhibitions.</p>
-        <p>We host over <strong>7000+ attendees</strong> and support students with mentorship, networking, and prizes.</p>
-      </div>
-
-      <div class="about-gallery">
-        <figure>
-          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80" alt="Students attending a technology event" loading="lazy" />
-          <figcaption>Students participating in technical talks and networking sessions.</figcaption>
-        </figure>
-        <figure>
-          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" alt="Team working in a hackathon" loading="lazy" />
-          <figcaption>Hackathon teams building and testing prototypes together.</figcaption>
-        </figure>
-        <figure>
-          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80" alt="Workshop in progress with laptop and electronics" loading="lazy" />
-          <figcaption>Hands-on workshops focused on practical engineering skills.</figcaption>
-        </figure>
-      </div>
-    </section>
-  </main>
-
-  <button id="floating-register" class="floating-register btn" type="button">🚀 Explore Registration</button>
-
-  <dialog id="registration-modal" class="registration-modal">
-    <form id="registration-form" class="modal-form" method="dialog" novalidate>
-      <h3>Explore Registration - CHARGE 2026</h3>
-  <button id="floating-register" class="floating-register" type="button">🚀 Register Now</button>
-
-  <dialog id="registration-modal" class="registration-modal">
-    <form id="registration-form" class="modal-form" method="dialog" novalidate>
-      <h3>Register for CHARGE 2026</h3>
-      <div class="form-grid">
-        <div>
-          <label for="name">Full Name</label>
-          <input id="name" name="name" type="text" placeholder="Your full name" required />
-        </div>
-        <div>
-          <label for="email">Email Address</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required />
-        </div>
-        <div>
-          <label for="phone">Phone Number</label>
-          <input id="phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required />
-        </div>
-        <div>
-          <label for="college">College / Organization</label>
-          <input id="college" name="college" type="text" placeholder="Institution name" required />
-        </div>
-        <div class="full">
-          <label for="event">Select Event</label>
-          <select id="event" name="event" required>
-            <option value="">Choose one</option>
-            <option>Hackathon</option>
-            <option>Workshop</option>
-            <option>Project Expo</option>
-            <option>Drone Competition</option>
-          </select>
-        </div>
-        <div class="full">
-          <label for="message">Message / Team Details (Optional)</label>
-          <textarea id="message" name="message" placeholder="Tell us about your team or idea"></textarea>
-        </div>
-      </div>
-      <p id="form-status" class="form-note" aria-live="polite">Fill the form and submit to save your registration in this browser.</p>
-      <div class="modal-actions">
-        <button class="btn submit-btn" type="submit">Submit Registration</button>
-        <button id="close-modal" class="btn btn-secondary" type="button">Close</button>
-      </div>
-    </form>
+  <!-- MODAL -->
+  <dialog id="registration-modal">
+    <h3>Choose Event</h3>
+    <ul>
+      <li><a href="#">Hackathon</a></li>
+      <li><a href="#">Workshop</a></li>
+      <li><a href="#">Project Expo</a></li>
+      <li><a href="#">Drone Competition</a></li>
+    </ul>
+    <button id="close-modal">Close</button>
   </dialog>
 
-  <footer>© 2026 CHARGE | The Electronix Club, Department of ECE, SNIST</footer>
+  <!-- JAVASCRIPT -->
+  <script>
+    // Countdown Timer
+    const eventDate = new Date("March 30, 2026 00:00:00").getTime();
+    const timer = document.getElementById("timer");
 
-  <script src="script.js" defer></script>
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      timer.innerHTML = days + " Days";
+    }, 1000);
+
+    // Modal Logic
+    const modal = document.getElementById("registration-modal");
+    const openBtn = document.getElementById("floating-register");
+    const closeBtn = document.getElementById("close-modal");
+
+    openBtn.addEventListener("click", () => modal.showModal());
+    closeBtn.addEventListener("click", () => modal.close());
+  </script>
+
 </body>
 </html>
