@@ -26,7 +26,7 @@ body {
 #timer {
   font-size: 40px;
   font-weight: bold;
-  background: linear-gradient(90deg,#00f5ff,#ff00c8);
+  background: linear-gradient(90deg, #00f5ff, #ff00c8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -57,6 +57,7 @@ body {
 .about-gallery {
   display: grid;
   gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .about-gallery img {
@@ -69,15 +70,10 @@ body {
   transform: scale(1.05);
 }
 
-/* Mobile Grid */
-@media (max-width: 768px) {
+/* Keep it readable on very small screens */
+@media (max-width: 640px) {
   .about-gallery {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .about-gallery figure:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    justify-self: center;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -101,7 +97,7 @@ body {
   border: none;
   cursor: pointer;
   backdrop-filter: blur(12px);
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   color: white;
   transition: all 0.4s ease;
   z-index: 999;
@@ -115,7 +111,7 @@ body {
   height: 20vh;
   border-radius: 0;
   font-size: 26px;
-  background: linear-gradient(90deg,#00f5ff,#ff00c8);
+  background: linear-gradient(90deg, #00f5ff, #ff00c8);
 }
 
 /* Modal */
@@ -124,6 +120,7 @@ dialog {
   border-radius: 20px;
   padding: 30px;
 }
+
 /* Ensure countdown sits above content properly */
 .countdown {
   margin-bottom: 25px;
@@ -139,8 +136,9 @@ dialog {
 }
 
 dialog::backdrop {
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
 }
+
 /* Override ANY old register button */
 #floating-register {
   position: fixed !important;
@@ -161,19 +159,4 @@ dialog::backdrop {
   height: 20vh !important;
   border-radius: 0 !important;
   font-size: 26px !important;
-}
-.about-gallery {
-  display: grid;
-  gap: 20px;
-}
-
-@media (max-width: 768px) {
-  .about-gallery {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .about-gallery figure:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    justify-self: center;
-  }
 }
